@@ -24,7 +24,7 @@ set ls=2
 
 " this highlights all parts of the line longer than 120 chars
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%120v.\+/
+match OverLength /\%121v.\+/
 
 set autoindent
 set cindent
