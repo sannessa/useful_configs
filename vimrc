@@ -18,18 +18,19 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 
-autocmd BufWritePre *.py,*.js,*.rb,*.rake,*.yaml,*.yml,*.c,*.h,*.cpp,*.haml,*.css,*.sass,*.html,*.php,*.perl,*.pp,*.cfg,*.conf,*.clj,*.java :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.rb,*.rake,*.yaml,*.yml,*.c,*.h,*.cpp,*.haml,*.css,*.sass,*.html,*.php,*.perl,*.pp,*.cfg,*.conf,*.clj,*.java,*.scala :call <SID>StripTrailingWhitespaces()
 
 set ls=2
 
+" this highlights all parts of the line longer than 120 chars
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+match OverLength /\%120v.\+/
 
 set autoindent
 set cindent
+set expandtab
+set softtabstop=2
 set shiftwidth=2
 
-"set list listchars=tab:\|\ 
-"highlight Whitespace cterm=none gui=none ctermbg=grey guibg=NONE ctermfg=yellow guifg=yellow
-"autocmd ColorScheme * highlight Whitespace gui=underline ctermbg=NONE guibg=NONE ctermfg=yellow guifg=yellow
-"match Whitespace /^  \+/     
+"this highlights all no-space characters and can be turned on and off by :set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
